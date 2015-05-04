@@ -1,0 +1,18 @@
+# depslib dependency file v1.0
+1430727395 source:c:\users\elgandara\desktop\chad\css2a-project\questiontest.cpp
+	"Question.h"
+	<iostream>
+
+1430727021 c:\users\elgandara\desktop\chad\css2a-project\question.h
+	<string>
+
+1430727161 source:c:\users\elgandara\desktop\chad\css2a-project\question.cpp
+	"Question.h"
+	<cstdlib>
+	<ctime>
+	<fstream>
+	<iostream>
+	<cmath>
+	<ctype.h>
+	<string>
+

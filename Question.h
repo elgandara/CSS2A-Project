@@ -13,9 +13,11 @@ using namespace std;
 class Question
 {
     protected:
+        int question_number;
         string question;
-        string answers[10][4];
+        string answers[8][4];
         int past_questions[8];
+        string file_name;
 
     public:
         // Constructors
@@ -23,16 +25,16 @@ class Question
 
         // Accessor methods
         string getQuestion() const {return question;}
-        string getAnswers() const {return answers[][4];}
+        int getQuestionNumber() const {return question_number;}
+        string getFileName() const {return file_name;}
 
         // Class methods
         void createNewQuestion();
         int checkAnswers(string answer);
-        int getScore(int row);
-
-
-
-
+        int getScore(string answer);
+        int stringToInt(string str);
+        void displayAnswers();
+        string tolowercase(string word);
 };
 
 #endif // QUESTION_H_INCLUDED
