@@ -31,6 +31,8 @@
 		<Compiler>
 			<Add option="-Wall" />
 		</Compiler>
+		<Unit filename="FaceOff.cpp" />
+		<Unit filename="FaceOff.h" />
 		<Unit filename="Question.cpp" />
 		<Unit filename="Question.h" />
 		<Unit filename="SpeedRound.cpp" />
