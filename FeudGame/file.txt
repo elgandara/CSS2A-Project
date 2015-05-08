@@ -1,40 +1,119 @@
 1,What is your favorite programming language?,
+C++,62,
+Python,25,
+Java,12,
 
 2,What is the ideal workplace for a software engineer?,
+Tech Company,37,
+Communication,12,
+Startup,12,
+Quiete,12,
+Organization,25,
 
 3,What is something every program should have?,
+Failsafe,Asserts,20,
+Organization,20,
+Text,20,
+Comments,40
 
 4,What is a type of operator that would be useful to overload?,
++,Plus Operator,28,
++=,Plus Equal Operator,14,
+<<,Output Stream, Output Stream Operator,57,
 
 5,What is something you do while writing code?,
+Listen to Music,Music,Listen to Tunes,75,
+Gaze Outside,Look Outside,12,
+Dance,12
 
 6,Name a runtime error that causes your code to not run.,
+Dividing by Zero,25,
+Infinite Loops,Loops,25,
+Segmentation Fault,Segmentation,25,
+Nonexistent File,Files,25,
 
 7,How would you describe the C++ programming language in one word?,
+Complex,12,
+Flexible,12,
+Colorful,12,
+Object Oriented,12,
+Useful,12,
+Specific,12,
 
 8,Name events you can attend to learn more about computer science.,
+Workshops,25,
+Hackathons,37,
+Meetups,25,
+Conferences,12,
 
 9,Name a workplace that rely on computer science to operate.,
+Netflix,16,
+Cyber Security,Security,16,
+E-commerce,16,
+Nintendo,16,
+Medical,16,
 
 10,Name a popular laptop brand.,
+Apple,Mac,Macintosh,50,
+Lenovo,37,
+Dell,12,
 
 11,Name a popular operating system?,
+OS X,OSX, 44,
+Linux,33,
+Windows,22,
 
 12,Name a popular school for studying computer science.,
+MIT,Masachusetts Institute of Technology,44,
+CSUMB,California State University of Monterrey Bay,22,
+Carnegie Mellon,Carnegie,12,
+Stanford,12
 
 13,Name a field in computer science to study.,
+
 
 14,How many fingers do you use when programming,
 
 15,Name something a computer scientist would like for Christmas?,
+Ram,37,
+Arduino,12,
+Socks,12,
+SSD,Spinning State Drive,12,
+Laptop,12,
+External Hard Drive,12,
 
 16,Name something people buy for their computer.,
+Case,Laptop Case,12,
+Ram,62,
+Mouse,25,
 
 17,Name something people associate with computer science.,
+Software,12,
+Websites,12,
+Fixing Computers,12,
+Nerds,12,
+Hardware,12,
+Networking,12,
+Hacking,12,
 
-18,How many tabs is too much? ,
+18,How many tabs is too much?,
+Nine,32,
+Seven,16,
+Four,16,
+Three,16,
+Ten,16,
 
 19,Name a skill a computer scientist has.,
+Critical Thinking,28,
+Problem Solving,57,
+Design Focus,14,
 
 20,Name a computer term everyone knows.,
-
+System Reboot,12,
+Ram,12,
+Variables,12,
+Key12,
+Laptop,12,
+Keyboard,12,
+Hack,12,
+Syntax Error,12,
