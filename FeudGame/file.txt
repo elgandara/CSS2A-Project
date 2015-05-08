@@ -1,7 +1,40 @@
-1,What is the programming language you have had the hardest time tying to learn?,
-Java,57,
-C++,32,
-Python,11,
+1,What is your favorite programming language?,
 
-2,What are some operators that can be overloaded?,
-Output Stream,Output,Output Operator,100,
+2,What is the ideal workplace for a software engineer?,
+
+3,What is something every program should have?,
+
+4,What is a type of operator that would be useful to overload?,
+
+5,What is something you do while writing code?,
+
+6,Name a runtime error that causes your code to not run.,
+
+7,How would you describe the C++ programming language in one word?,
+
+8,Name events you can attend to learn more about computer science.,
+
+9,Name a workplace that rely on computer science to operate.,
+
+10,Name a popular laptop brand.,
+
+11,Name a popular operating system?,
+
+12,Name a popular school for studying computer science.,
+
+13,Name a field in computer science to study.,
+
+14,How many fingers do you use when programming,
+
+15,Name something a computer scientist would like for Christmas?,
+
+16,Name something people buy for their computer.,
+
+17,Name something people associate with computer science.,
+
+18,How many tabs is too much? ,
+
+19,Name a skill a computer scientist has.,
+
+20,Name a computer term everyone knows.,
+
