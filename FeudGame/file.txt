@@ -14,7 +14,7 @@ Organization,25,
 Failsafe,Asserts,20,
 Organization,20,
 Text,20,
-Comments,40
+Comments,40,
 
 4,What is a type of operator that would be useful to overload?,
 +,Plus Operator,28,
@@ -24,7 +24,7 @@ Comments,40
 5,What is something you do while writing code?,
 Listen to Music,Music,Listen to Tunes,75,
 Gaze Outside,Look Outside,12,
-Dance,12
+Dance,12,
 
 6,Name a runtime error that causes your code to not run.,
 Dividing by Zero,25,
@@ -67,12 +67,19 @@ Windows,22,
 MIT,Masachusetts Institute of Technology,44,
 CSUMB,California State University of Monterrey Bay,22,
 Carnegie Mellon,Carnegie,12,
-Stanford,12
+Stanford,12,
 
 13,Name a field in computer science to study.,
-
+Software Engineering,75,
+Bio,12,
+Automation, Robotics,12,
+Network Security, Cyber Security,12,
 
 14,How many fingers do you use when programming,
+Ten,50,
+Six,25,
+Nine,12,
+Eight,12,
 
 15,Name something a computer scientist would like for Christmas?,
 Ram,37,
