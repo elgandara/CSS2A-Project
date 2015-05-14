@@ -78,14 +78,7 @@ void Question::createNewQuestion()
 {
     ifstream in;
     string input;
-
-    for (int i = 0; i < 8; i++)
-    {
-        for (int j = 0; j < 4; j++)
-        {
-            answers[i][j] = "";
-        }
-    }
+    int current_question = 0;
 
     question_number = (rand() % 20) + 1;
     in.open(file_name.c_str());
@@ -97,50 +90,81 @@ void Question::createNewQuestion()
     }
 
     // For testing purposes
-    //question_number = 1;
+    //int value = 11;
+    //question_number = value;
     // Ending testing code
 
 
-    while (!in.eof() && Question::stringToInt(input) != question_number + 1)
-    {
-        getline(in, input, ',');        // Will get the first character of a line from a file
-        while (input[0] == '\n')
+        for (int i = 0; i < 8; i++)
         {
-            input = input.substr(1, input.length());
-        }
-
-        if (Question::stringToInt(input) == question_number)
-        {
-            getline(in, question, ',');
-
-            int row = 0;
-            int col = 0;
-            while (!in.eof() && Question::stringToInt(input) != question_number + 1)
+            past_questions[i] = 0;
+            for (int j = 0; j < 4; j++)
             {
-                getline(in, input, ',');
-                while (input[0] == '\n')
-                {
-                    input = input.substr(1, input.length());
-                }
-
-                if (isdigit(input[0]) && Question::stringToInt(input) != question_number + 1)
-                {
-                    answers[row][3] = input;
-                    row++;
-                    col = 0;
-                }
-                else if (Question::stringToInt(input) != question_number + 1)
-                {
-                    answers[row][col] = input;
-                    col++;
-                }
-
+                answers[i][j] = "";
             }
         }
 
-        //cout << "Input:" << input << ":End" << endl;
 
-    }
+
+        while (!in.eof() && current_question != question_number + 1)
+        {
+            getline(in, input, ',');        // Will get the first character of a line from a file
+            while (input[0] == '\n')
+            {
+                input = input.substr(1, input.length());
+            }
+            //cout << "Input::" << input << "::Input" << endl;
+
+            if (input[0] == '?')
+            {
+                current_question = stringToInt(input.substr(1,input.length()));
+
+            }
+
+
+            if (current_question == question_number)
+            {
+                getline(in, question, ',');
+
+                int row = 0;
+                int col = 0;
+                while (!in.eof() && current_question != question_number + 1)
+                {
+                    getline(in, input, ',');
+                    while (input[0] == '\n')
+                    {
+                        input = input.substr(1, input.length());
+                    }
+
+                    if (input[0] == '?')
+                    {
+                        current_question = stringToInt(input.substr(1,input.length()));
+
+                    }
+
+                    if (isdigit(input[0]))
+                    {
+                        answers[row][3] = input;
+                        row++;
+                        col = 0;
+                    }
+                    else if (input[0] != '?')
+                    {
+                        answers[row][col] = input;
+                        col++;
+                    }
+
+                }
+            }
+
+            //cout << "Input:" << input << ":End" << endl;
+
+        }
+            //cout << "Input::" << input << "::Input" << endl;
+            //cout << "Question: " << question << endl;
+            //displayAnswers();
+            //cout << endl;
+
 
     in.close();     // Closes file
 
@@ -178,4 +202,109 @@ string Question::tolowercase(string word)
     }
 
     return word;
+}
+
+void Question::getAnswers(string arr[])
+{
+    for (int i = 0; i < 8; i++)
+    {
+        if (answers[i][0] != "")
+            arr[i] = answers[i][0];
+    }
+}
+
+void Question::displayQuestions()
+{
+
+    ifstream in;
+    string input;
+
+    in.open(file_name.c_str());
+
+    if(in.fail())       // Check to make sure the file opens properly
+    {
+        cout << "Error opening file " << file_name << endl;     // Will display message and exit program if file opening fails
+        exit(1);
+    }
+
+    // For testing purposes
+    int value = 11;
+    int current_question = 0;
+    ;
+    question_number = value;
+    // Ending testing code
+
+
+        for (int i = 0; i < 8; i++)
+        {
+            past_questions[i] = 0;
+            for (int j = 0; j < 4; j++)
+            {
+                answers[i][j] = "";
+            }
+        }
+
+
+
+        while (!in.eof() && current_question != question_number + 1)
+        {
+            getline(in, input, ',');        // Will get the first character of a line from a file
+            while (input[0] == '\n')
+            {
+                input = input.substr(1, input.length());
+            }
+            //cout << "Input::" << input << "::Input" << endl;
+
+            if (input[0] == '?')
+            {
+                current_question = stringToInt(input.substr(1,input.length()));
+
+            }
+
+
+            if (current_question == question_number)
+            {
+                getline(in, question, ',');
+
+                int row = 0;
+                int col = 0;
+                while (!in.eof() && current_question != question_number + 1)
+                {
+                    getline(in, input, ',');
+                    while (input[0] == '\n')
+                    {
+                        input = input.substr(1, input.length());
+                    }
+
+                    if (input[0] == '?')
+                    {
+                        current_question = stringToInt(input.substr(1,input.length()));
+
+                    }
+
+                    if (isdigit(input[0]))
+                    {
+                        answers[row][3] = input;
+                        row++;
+                        col = 0;
+                    }
+                    else if (input[0] != '?')
+                    {
+                        answers[row][col] = input;
+                        col++;
+                    }
+
+                }
+            }
+
+            //cout << "Input:" << input << ":End" << endl;
+
+        }
+            //cout << "Input::" << input << "::Input" << endl;
+            cout << "Question: " << question << endl;
+            displayAnswers();
+            cout << endl;
+
+
+    in.close();     // Closes file
 }

@@ -12,6 +12,10 @@ using namespace std;
 
 class Question
 {
+    private:
+        int checkAnswers(string answer);
+        string tolowercase(string word);
+
     protected:
         int question_number;
         string question;
@@ -27,14 +31,14 @@ class Question
         string getQuestion() const {return question;}
         int getQuestionNumber() const {return question_number;}
         string getFileName() const {return file_name;}
+        void getAnswers(string arr[]);
 
         // Class methods
         void createNewQuestion();
-        int checkAnswers(string answer);
         int getScore(string answer);
         int stringToInt(string str);
         void displayAnswers();
-        string tolowercase(string word);
+        void displayQuestions();
 };
 
 #endif // QUESTION_H_INCLUDED
