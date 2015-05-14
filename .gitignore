@@ -1,2 +1,5 @@
 *.layout
-FuedGame/FeudGame.laylout
+
+FuedGame/FeudGame.layout
+
+*.depend
