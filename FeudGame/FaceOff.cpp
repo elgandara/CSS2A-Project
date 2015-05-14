@@ -17,10 +17,24 @@
 //*******************************************************
 FaceOff::FaceOff()
 {
-    Question question.createNewQuestion();
+     question.createNewQuestion();
      answer = "";
      chances = 0;
      playerScore  = 0;
+     for(int i = 0; i < 8; i++)
+     {
+         ifCorrect[i] = false;
+     }
+
+    answers
+    //question.getanswers as a parameter
+    // to initialize all the answers
+
+    //To initialize all the point values
+    {
+        for (int i = 0; i < 8;i++)
+            int score[i]
+    }
      //Will call the void getAnswers(answers) method and set the answers for the array
 }
 //*************************************************
@@ -42,7 +56,7 @@ void FaceOff::runRound()
             chances++;
             cout << chances << endl;
 
-    }while(chances < 3)
+    }while(chances < 3);
 
 }
 //***************************************************************
@@ -51,13 +65,13 @@ void FaceOff::runRound()
 //PostCondition:
 //
 //***************************************************************
-FaceOff::display()
+void FaceOff::display()
 {
-    cout << "==================================================="; << endl;
+    cout << "===================================================" << endl;
     for(int i = 0; i < 8; i++)
     {
         cout << answers[i] << endl;
     }
 
-    cout << "===================================================="; << endl;
+    cout << "====================================================" << endl;
 }

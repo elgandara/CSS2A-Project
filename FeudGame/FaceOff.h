@@ -13,9 +13,13 @@
 class FaceOff
 {
 protected:
+    Question question;
+    string answer;
     int chances = 0;
     int playerScore = 0;
+    bool ifCorrect[8];
     string answers[8];
+    int score[8];
 
 public:
     //Default Constructor
