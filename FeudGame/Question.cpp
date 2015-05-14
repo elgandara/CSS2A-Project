@@ -87,7 +87,7 @@ void Question::createNewQuestion()
         }
     }
 
-    question_number = (rand() % 2) + 1;
+    question_number = (rand() % 20) + 1;
     in.open(file_name.c_str());
 
     if(in.fail())       // Check to make sure the file opens properly
