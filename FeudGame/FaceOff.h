@@ -13,19 +13,23 @@
 class FaceOff
 {
 protected:
-    int tries = 0;
-    int player1Score = 0;
-    int player2Score = 0;
+    int chances = 0;
+    int playerScore = 0;
+    string answers[8];
 
 public:
     //Default Constructor
     FaceOff();
 
+    int getPoints();
+    void runRound();
+    void display();
+
     //Creating the object for question.
-    Question question = new Question();
+    //Question question = new Question();
 
     //Using the members of class
-    question->createNewQuestion();
+    //question->createNewQuestion();
 
 
 };
