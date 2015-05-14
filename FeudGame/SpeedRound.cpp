@@ -15,18 +15,19 @@
 #include <sstream>
 using namespace std;
 
-
-// TODO: use the 3x6 array to calculate points, and store answers and questions.
+// Constructor
 SpeedRound::SpeedRound()
 {
-    //question.createNewQuestion();
     pointTotal = 0;
+    for(int i = 0; i < QUESTION_NUM; i++)
+    {
+        qap[i][0] = "";
+        qap[i][1] = "";
+        qap[i][2] = "";
+    }
 }
-void SpeedRound::newRound()
-{
-    question.createNewQuestion();
-    pointTotal = 0;
-}
+
+// Member functions
 void SpeedRound::runRound()
 {
     string ans;
@@ -36,22 +37,19 @@ void SpeedRound::runRound()
         getline(cin , ans);
         qap[i][0] = question.getQuestion();
         qap[i][1] = ans;
-        getAnswerPoints(i);
-        display();
+        getPoints(i);
         question.createNewQuestion();
     }
     display();
 }
-void SpeedRound::getAnswerPoints(int location)
+void SpeedRound::getPoints(int location)
 {
     int point;
     point = question.getScore(qap[location][1]);
     pointTotal += point;
-    stringstream ss;
-    ss << point;
-
-    ss >> qap[location][2];
-    //qap[location][2] = to_string(point);
+    stringstream ss;            // Will create a string stream to convert int to string
+    ss << point;                // Add int to stream
+    ss >> qap[location][2];     // Input string into the corresponding location in points column
 }
 void SpeedRound::display()
 {
@@ -64,4 +62,15 @@ void SpeedRound::display()
     }
     cout << "Total Points: " << getPointTotal() << endl;
     cout << "\n======================================================\n";
+}
+void SpeedRound::newRound()
+{
+    question.createNewQuestion();
+    pointTotal = 0;
+    for(int i = 0; i < QUESTION_NUM; i++)
+    {
+        qap[i][0] = "";
+        qap[i][1] = "";
+        qap[i][2] = "";
+    }
 }
