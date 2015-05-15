@@ -28,15 +28,19 @@ public:
     //Default Constructor
     FaceOff();
 
-    //Accessor method to retrieve a question.
+    //Accessor method to retrieve a question and the player score.
     string getQ() const {return q;}
+    int getPlayerScore() const {return playerScore;}
 
+    bool allTrue();
     void getPoints();
     void getUserInput();
     void initializeScoreArray();
     void runRound();
     void addScore();
     void display();
+    void displayAll();
+    void newRound();
 
 };
 #endif // FACEOFF_H_INCLUDED

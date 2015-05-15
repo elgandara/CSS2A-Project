@@ -36,29 +36,25 @@ FaceOff::FaceOff()
 
     //Method will initialize the actual points to the score array.
     getPoints();
-
-     //Will call the void getAnswers(answers) method and set the answers for the array
 }
 //******************************************************
 //Summary:Function will initiate a FaceOff Round.
 //PreCondition: An object of the class must be created.
-//PostCondition:
+//PostCondition: The round will be run.
 //
 //******************************************************
 void FaceOff::runRound()
 {
-    int storeAnswer;
-    cout << question.getQuestionNumber() << ")";
-    cout << question.getQuestion() << endl;
+
     do
     {
-        cin >> answer;
-        question.getScore(answer);
-        if (storeAnswer == 0)
-            chances++;
-            cout << chances << endl;
+       display();
+       getUserInput();
+       allTrue();
 
-    }while(chances < 3);
+    }while(!allTrue() && chances < 3);
+    displayAll();
+    display();
 
 }
 //*******************************************************************************
@@ -137,12 +133,67 @@ void FaceOff::addScore()
 //***********************************************************************************
 //Summary:Function will get user input.
 //PreCondition: Question must be displayed. An object of the class must be created.
-//PostCondition:
+//PostCondition: The user input will be used to check if it is a valid score. If the user
+//input is correct then it will be added to the score.
 //
 //***********************************************************************************
 void FaceOff::getUserInput()
 {
+    int row = 0;
     cout << "Enter answer: ";
     cin >> answer;
-    question.getScore(answer);
+    row = question.checkAnswers(answer);
+    if(row != -1)
+    {
+        ifCorrect[row] = true;
+        addScore();
+    }
+    else
+        chances++;
+    cout << "Strikes:" << chances << endl;
+}
+//***********************************************************************************
+//Summary:Function will check if all of the answers are true
+//PreCondition: An object must be created of the class.
+//There must be user input.
+//PostCondition: A boolean value will be returned.
+//
+//***********************************************************************************
+bool FaceOff::allTrue()
+{
+    for(int i = 0; i < 8; i++)
+    {
+        if( ifCorrect[i] == false)
+            return false;
+    }
+
+    return true;
+
+}
+//*************************************************************************
+//Summary: Will set the boolean values of the boolean array to true.
+//PreCondition: The chances counter needs to hit 3.
+//PostCondition: The values of the array will be true.
+//
+//*************************************************************************
+void FaceOff::displayAll()
+{
+    for(int i = 0; i < 8; i++)
+    {
+        ifCorrect[i] = true;
+    }
+}
+//*************************************************************************
+//Summary: Will create a new round
+//PreCondition:
+//PostCondition:
+//
+//*************************************************************************
+void FaceOff::createNewRound()
+{
+    question.createNewQuestion();
+    chances = 0;
+    playerScore = 0;
+    answer = "";
+    question.getAnswers(answers);
 }
