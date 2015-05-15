@@ -78,6 +78,7 @@ void Question::createNewQuestion()
     {
         question_number = (rand() % 20) + 1;
     } while (inPastQuestions());
+    past_questions[num_past_questions] = question_number;
     num_past_questions++;
 
     in.open(file_name.c_str());
