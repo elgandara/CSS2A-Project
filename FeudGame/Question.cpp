@@ -2,7 +2,7 @@
 // Filename: Question.cpp
 // Description:
 //
-// Author:
+// Author: Eliasar Gandara
 // Created On:
 // Last Modified:
 // *********************************************************
@@ -22,16 +22,10 @@ Question::Question()
     srand(time(NULL));
     file_name = "file.txt";
 
-    for (int i = 0; i < 8; i++)
-    {
-        past_questions[i] = 0;
-        for (int j = 0; j < 4; j++)
-        {
-            answers[i][j] = "";
-        }
-    }
+    num_past_questions = 0;
 
-    Question::createNewQuestion();
+    clearAnswers();
+    createNewQuestion();
 }
 
 int Question::stringToInt(string str)
@@ -80,7 +74,12 @@ void Question::createNewQuestion()
     string input;
     int current_question = 0;
 
-    question_number = (rand() % 20) + 1;
+    do
+    {
+        question_number = (rand() % 20) + 1;
+    } while (inPastQuestions());
+    num_past_questions++;
+
     in.open(file_name.c_str());
 
     if(in.fail())       // Check to make sure the file opens properly
@@ -89,85 +88,60 @@ void Question::createNewQuestion()
         exit(1);
     }
 
-    // For testing purposes
-    //int value = 11;
-    //question_number = value;
-    // Ending testing code
+    clearAnswers();
 
-
-        for (int i = 0; i < 8; i++)
+    while (!in.eof() && current_question != question_number + 1)
+    {
+        getline(in, input, ',');        // Will get the first character of a line from a file
+        while (input[0] == '\n')
         {
-            past_questions[i] = 0;
-            for (int j = 0; j < 4; j++)
-            {
-                answers[i][j] = "";
-            }
+            input = input.substr(1, input.length());
+        }
+
+        if (input[0] == '?')
+        {
+            current_question = stringToInt(input.substr(1,input.length()));
+
         }
 
 
-
-        while (!in.eof() && current_question != question_number + 1)
+        if (current_question == question_number)
         {
-            getline(in, input, ',');        // Will get the first character of a line from a file
-            while (input[0] == '\n')
+            getline(in, question, ',');
+
+            int row = 0;
+            int col = 0;
+            while (!in.eof() && current_question != question_number + 1)
             {
-                input = input.substr(1, input.length());
-            }
-            //cout << "Input::" << input << "::Input" << endl;
-
-            if (input[0] == '?')
-            {
-                current_question = stringToInt(input.substr(1,input.length()));
-
-            }
-
-
-            if (current_question == question_number)
-            {
-                getline(in, question, ',');
-
-                int row = 0;
-                int col = 0;
-                while (!in.eof() && current_question != question_number + 1)
+                getline(in, input, ',');
+                while (input[0] == '\n')
                 {
-                    getline(in, input, ',');
-                    while (input[0] == '\n')
-                    {
-                        input = input.substr(1, input.length());
-                    }
+                    input = input.substr(1, input.length());
+                }
 
-                    if (input[0] == '?')
-                    {
-                        current_question = stringToInt(input.substr(1,input.length()));
-
-                    }
-
-                    if (isdigit(input[0]))
-                    {
-                        answers[row][3] = input;
-                        row++;
-                        col = 0;
-                    }
-                    else if (input[0] != '?')
-                    {
-                        answers[row][col] = input;
-                        col++;
-                    }
+                if (input[0] == '?')
+                {
+                    current_question = stringToInt(input.substr(1,input.length()));
 
                 }
+
+                if (isdigit(input[0]))
+                {
+                    answers[row][3] = input;
+                    row++;
+                    col = 0;
+                }
+                else if (input[0] != '?')
+                {
+                    answers[row][col] = input;
+                    col++;
+                }
+
             }
-
-            //cout << "Input:" << input << ":End" << endl;
-
         }
-            //cout << "Input::" << input << "::Input" << endl;
-            //cout << "Question: " << question << endl;
-            //displayAnswers();
-            //cout << endl;
-
+    }
 
     in.close();     // Closes file
-
 }
 
 int Question::checkAnswers(string answer)     // returns row of answer if answer matches the possible answers, -1 otherwise
@@ -228,83 +202,96 @@ void Question::displayQuestions()
     }
 
     // For testing purposes
-    int value = 11;
+    int value = 1;
     int current_question = 0;
-    ;
     question_number = value;
     // Ending testing code
 
+    clearAnswers();
 
-        for (int i = 0; i < 8; i++)
+    while (!in.eof() && current_question != question_number + 1)
+    {
+        getline(in, input, ',');        // Will get the first character of a line from a file
+        while (input[0] == '\n')
         {
-            past_questions[i] = 0;
-            for (int j = 0; j < 4; j++)
-            {
-                answers[i][j] = "";
-            }
+            input = input.substr(1, input.length());
+        }
+        //cout << "Input::" << input << "::Input" << endl;
+
+        if (input[0] == '?')
+        {
+            current_question = stringToInt(input.substr(1,input.length()));
+
         }
 
 
-
-        while (!in.eof() && current_question != question_number + 1)
+        if (current_question == question_number)
         {
-            getline(in, input, ',');        // Will get the first character of a line from a file
-            while (input[0] == '\n')
+            getline(in, question, ',');
+
+            int row = 0;
+            int col = 0;
+            while (!in.eof() && current_question != question_number + 1)
             {
-                input = input.substr(1, input.length());
-            }
-            //cout << "Input::" << input << "::Input" << endl;
-
-            if (input[0] == '?')
-            {
-                current_question = stringToInt(input.substr(1,input.length()));
-
-            }
-
-
-            if (current_question == question_number)
-            {
-                getline(in, question, ',');
-
-                int row = 0;
-                int col = 0;
-                while (!in.eof() && current_question != question_number + 1)
+                getline(in, input, ',');
+                while (input[0] == '\n')
                 {
-                    getline(in, input, ',');
-                    while (input[0] == '\n')
-                    {
-                        input = input.substr(1, input.length());
-                    }
+                    input = input.substr(1, input.length());
+                }
 
-                    if (input[0] == '?')
-                    {
-                        current_question = stringToInt(input.substr(1,input.length()));
-
-                    }
-
-                    if (isdigit(input[0]))
-                    {
-                        answers[row][3] = input;
-                        row++;
-                        col = 0;
-                    }
-                    else if (input[0] != '?')
-                    {
-                        answers[row][col] = input;
-                        col++;
-                    }
+                if (input[0] == '?')
+                {
+                    current_question = stringToInt(input.substr(1,input.length()));
 
                 }
+
+                if (isdigit(input[0]))
+                {
+                    answers[row][3] = input;
+                    row++;
+                    col = 0;
+                }
+                else if (input[0] != '?')
+                {
+                    answers[row][col] = input;
+                    col++;
+                }
+
             }
-
-            //cout << "Input:" << input << ":End" << endl;
-
         }
-            //cout << "Input::" << input << "::Input" << endl;
-            cout << "Question: " << question << endl;
-            displayAnswers();
-            cout << endl;
+
+        //cout << "Input:" << input << ":End" << endl;
+
+    }
+        //cout << "Input::" << input << "::Input" << endl;
+        cout << question_number << ". " << "Question: " << question << endl;
+        displayAnswers();
+        cout << endl;
 
 
     in.close();     // Closes file
+}
+
+bool Question::inPastQuestions()
+{
+    bool isInPastQuestions = false;
+
+    for (int i = 0; i < num_past_questions; i++)
+    {
+        if (question_number == past_questions[i])
+            isInPastQuestions = true;
+    }
+
+    return isInPastQuestions;
+}
+
+void Question::clearAnswers()
+{
+    for (int i = 0; i < 8; i++)
+    {
+        for (int j = 0; j < 4; j++)
+        {
+            answers[i][j] = "";
+        }
+    }
 }
