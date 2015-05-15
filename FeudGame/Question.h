@@ -20,6 +20,7 @@ class Question
         string question;
         string answers[8][4];
         int past_questions[8];
+        int num_past_questions;
         string file_name;
 
     public:
@@ -39,6 +40,8 @@ class Question
         void displayAnswers();
         void displayQuestions();
         int checkAnswers(string answer);
+        bool inPastQuestions();
+        void clearAnswers();
 };
 
 #endif // QUESTION_H_INCLUDED
