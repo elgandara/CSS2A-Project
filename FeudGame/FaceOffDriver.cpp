@@ -9,5 +9,8 @@
 #include "FaceOff.h"
 int main()
 {
+    FaceOff f;
+    f.runRound();
+    //f.createNewRound();
     return 0;
 }
