@@ -13,7 +13,6 @@ using namespace std;
 class Question
 {
     private:
-        int checkAnswers(string answer);
         string tolowercase(string word);
 
     protected:
@@ -39,6 +38,7 @@ class Question
         int stringToInt(string str);
         void displayAnswers();
         void displayQuestions();
+        int checkAnswers(string answer);
 };
 
 #endif // QUESTION_H_INCLUDED
