@@ -1,7 +1,7 @@
 //***************************************************************
 // SpeedRound.cpp
 // Author: Laura Chavez
-// Last Modified: 11 May 2015
+// Last Modified: 15 May 2015
 // Description: Implements the constructors and member functions
 //  in SpeedRound class
 //***************************************************************
@@ -13,6 +13,7 @@
 #include <iomanip>
 #include <string>
 #include <sstream>
+#include <cstdlib>
 using namespace std;
 
 // Constructor
@@ -53,15 +54,16 @@ void SpeedRound::getPoints(int location)
 }
 void SpeedRound::display()
 {
-    cout << "\n======================================================\n";
+    system("cls");
+    cout << "=====================================================================\n";
     for(int i = 0; i < QUESTION_NUM; i++)
     {
         int j = i;
         cout << qap[i][0] << endl;
-        cout << ++j << " " << setw(10) << left << qap[i][1] << " | " << setw(5) << qap[i][2] << endl;
+        cout << ++j << " " << setw(17) << left << qap[i][1] << " | " << setw(5) << qap[i][2] << endl;
     }
+    cout << "=====================================================================\n";
     cout << "Total Points: " << getPointTotal() << endl;
-    cout << "\n======================================================\n";
 }
 void SpeedRound::newRound()
 {
