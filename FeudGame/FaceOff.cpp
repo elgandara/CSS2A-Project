@@ -9,6 +9,8 @@
 #include "FaceOff.h"
 #include "Question.h"
 #include <iostream>
+#include <cstdlib>
+#include <windows.h>
 //******************************************************
 //Summary:Default constructor of the class
 //PreCondition: An object of the class must be created.
@@ -51,11 +53,11 @@ void FaceOff::runRound()
        display();
        getUserInput();
        allTrue();
-
+       system("CLS");
     }while(!allTrue() && chances < 3);
     displayAll();
     display();
-
+    Sleep(3000);
 }
 //*******************************************************************************
 //Summary:Function will display the answers of the FaceOff Round.
@@ -189,11 +191,18 @@ void FaceOff::displayAll()
 //PostCondition:
 //
 //*************************************************************************
-void FaceOff::createNewRound()
+void FaceOff::newRound()
 {
+    system("CLS");
     question.createNewQuestion();
+    q = question.getQuestion();
     chances = 0;
     playerScore = 0;
     answer = "";
+    for(int i = 0; i < 8; i++)
+    {
+        ifCorrect[i] = false;
+        answers[i] = "";
+    }
     question.getAnswers(answers);
 }

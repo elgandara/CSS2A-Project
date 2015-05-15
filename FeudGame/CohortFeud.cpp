@@ -22,7 +22,7 @@ void CohortFeud::runGame()
 {
     int rounds = 0;
     cout << "Welcome to Cohort Feud!\n";
-    Sleep(2000);
+    Sleep(500);
     cout << "Who wants to play?\n Enter your name: \n";
     getline(cin, username);
     while(rounds < 3)
@@ -30,10 +30,13 @@ void CohortFeud::runGame()
         faceoff.runRound();
         overallScore += faceoff.getPlayerScore();
         faceoff.newRound();
+        cout << "Total Score: " << overallScore << endl;
+        rounds++;
     }
+    cin.ignore();
     speedround.runRound();
     overallScore += speedround.getPointTotal();
-    cout << "Your overall score was " << overallScore << endl;
+    cout <<  username << "'s overall score was " << overallScore << endl;
 }
 void CohortFeud::newGame()
 {
