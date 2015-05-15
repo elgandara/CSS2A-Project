@@ -15,9 +15,7 @@ int main()
 {
     Question question;
 
-
-    cout << question.getQuestionNumber() << ". ";
-    cout << question.getQuestion() << endl;
+    cout << question.getQuestionNumber() << ". " << question.getQuestion() << endl;
 
     cout << endl;
     question.displayAnswers();

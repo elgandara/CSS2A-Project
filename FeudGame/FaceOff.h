@@ -10,27 +10,37 @@
 #include <iostream>
 #include "Question.h"
 #include <string>
+#include <iomanip>
 class FaceOff
 {
 protected:
-    int chances = 0;
-    int playerScore = 0;
+    Question question;
+    string answer;
+    int storeAnswer;
+    int chances;
+    int playerScore;
+    bool ifCorrect[8];
     string answers[8];
+    int score[8];
+    string q;
 
 public:
     //Default Constructor
     FaceOff();
 
-    int getPoints();
+    //Accessor method to retrieve a question and the player score.
+    string getQ() const {return q;}
+    int getPlayerScore() const {return playerScore;}
+
+    bool allTrue();
+    void getPoints();
+    void getUserInput();
+    void initializeScoreArray();
     void runRound();
+    void addScore();
     void display();
-
-    //Creating the object for question.
-    //Question question = new Question();
-
-    //Using the members of class
-    //question->createNewQuestion();
-
+    void displayAll();
+    void newRound();
 
 };
 #endif // FACEOFF_H_INCLUDED
